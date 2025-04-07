@@ -13,7 +13,7 @@ const App = () => {
         <div>
           <h1>Extensions List</h1>
           <div className='flex'>
-            <button>All</button>
+            <button><Alls></Alls></button>
             <button>Active</button>
             <button>Inactive</button>
           </div>
