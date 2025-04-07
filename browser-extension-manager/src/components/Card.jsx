@@ -7,7 +7,7 @@ const Card = ({logo, name, description, isActive}) => {
   function handleClick(){
     setIsOn(!isOn)
   }
-  function removeBlock(){
+  function removeBlock(e){
     
   }
   return (
@@ -20,7 +20,8 @@ const Card = ({logo, name, description, isActive}) => {
         </div>
       </div>
       <div className="absolute bottom-4 flex justify-between items-center w-[87%]">
-        <Button onClick={removeBlock} label={'Remove'} border='border-[1px] border-gray-50' />
+        
+        <button onClick={(e) => {removeBlock(e)}} className="border-[1px] border-gray-50 text-white rounded-2xl px-4 py-1 text-center cursor-pointer">Remove</button>
         <div onClick={handleClick} className={`relative rounded-full w-9 h-4 cursor-pointer  ${isOn ? 'bg-red-400' : 'bg-gray-400'}`}>
           <div className={`absolute w-4 h-4 bg-white rounded-full  ${isOn ? ' left-5' : ' left-0'}`}>
           </div>
