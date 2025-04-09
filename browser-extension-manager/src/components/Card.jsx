@@ -4,8 +4,9 @@ import Button from "./Button"
 const Card = ({logo, name, description, isActive}) => {
   const [isOn, setIsOn] = useState(false)
 
-  function handleClick(){
+  function handleClick(e){
     setIsOn(!isOn)
+    
   }
   function removeBlock(e){
     
@@ -20,8 +21,7 @@ const Card = ({logo, name, description, isActive}) => {
         </div>
       </div>
       <div className="absolute bottom-4 flex justify-between items-center w-[87%]">
-        
-        <button onClick={(e) => {removeBlock(e)}} className="border-[1px] border-gray-50 text-white rounded-2xl px-4 py-1 text-center cursor-pointer">Remove</button>
+        <button onClick={(e) => {removeBlock(e)}} className="border-[1px] border-gray-50 text-white rounded-2xl px-4 py-1 text-center cursor-pointer hover:bg-red-500 hover:text-black hover:border-black">Remove</button>
         <div onClick={handleClick} className={`relative rounded-full w-9 h-4 cursor-pointer  ${isOn ? 'bg-red-400' : 'bg-gray-400'}`}>
           <div className={`absolute w-4 h-4 bg-white rounded-full  ${isOn ? ' left-5' : ' left-0'}`}>
           </div>
