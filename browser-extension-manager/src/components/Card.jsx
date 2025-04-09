@@ -1,9 +1,11 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
-const Card = ({logo, name, description, isActive}) => {
+const Card = ({logo, name, description, isActive: initialActive}) => {
+
+  const [isActive, setIsActive] = useState(initialActive);
 
   function handleClick(){
-    isActive ? isActive = false : isActive = true
+    setIsActive(prev => !prev);
   }
   
 
