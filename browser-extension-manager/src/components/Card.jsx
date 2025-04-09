@@ -1,16 +1,14 @@
-import { useState } from "react"
-import Button from "./Button"
+import { useEffect } from "react"
 
 const Card = ({logo, name, description, isActive}) => {
-  const [isOn, setIsOn] = useState(false)
 
   function handleClick(){
-    isActive ? isActive = false : isActive = 
-    console.log(isActive)
-    
+    isActive ? isActive = false : isActive = true
   }
+  
+
   function removeBlock(e){
-    
+  
   }
   return (
     <div id={isActive.toString()} className="bg-gray-800 h-44 bg-opacity-10 rounded-2xl p-4 border-[1px] border-gray-50 border-opacity-40 relative">
