@@ -1,7 +1,6 @@
 import logo from '../public/images/logo.svg'
 import sun from '../public/images/icon-sun.svg'
 import Card from './components/Card'
-import Button from './components/Button'
 import data from './data.json'
 import moon from '../public/images/icon-moon.svg'
 import { useState, useEffect } from 'react'
