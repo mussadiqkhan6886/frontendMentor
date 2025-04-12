@@ -19,17 +19,17 @@ const App = () => {
   }, [darkMode]);
 
   return (
-    <section className="min-h-screen p-5 md:p-20 w-full flex flex-col justify-center items-center bg-[linear-gradient(180deg,_#040918_0%,_#091540_100%)]">
+    <section className="min-h-screen p-5 md:p-20 w-full flex flex-col justify-center items-center bg-gradient-to-b from-[#040918] to-[#091540] dark:from-gray-200 dark:to-white">
       <div className='w-full flex relative'>
         <img src={logo} className=' absolute top-2 left-3'  alt="logo" />
-        <input type="text" className='bg-slate-600 w-full h-14 rounded-xl'  />
+        <input type="text" className='bg-slate-600 dark:bg-white w-full h-14 rounded-xl'  />
         <button onClick={() => setDarkMode(!darkMode)} className='outline-orange-400' >
-        <img src={sun} className='cursor-pointer absolute right-2 bg-slate-500 p-2.5 rounded-2xl top-[7px]' alt="sun logo" />
+        <img src={darkMode ?  moon : sun } className='cursor-pointer absolute right-2 bg-slate-500 p-2.5 rounded-2xl top-[7px] dark:bg-slate-300' alt="sun logo" />
         </button>
       </div>
       <div className='w-full flex flex-col items-center'>
         <div className='flex flex-col md:flex-row  justify-between w-full mt-10 items-center gap-3'>
-          <h1 className='text-white font-medium text-3xl'>Extensions List</h1>
+          <h1 className='text-white font-medium text-3xl dark:text-black'>Extensions List</h1>
           <div className='flex text-white'>
             <Button label={'All'} active={true} />
             <Button label={'Active'} />
