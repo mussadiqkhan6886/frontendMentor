@@ -8,7 +8,29 @@ import { useState, useEffect } from 'react'
 const App = () => {
 
   const [darkMode, setDarkMode] = useState(false);
+  const [allActive, setAllActive] = useState(true)
+  const [active, setActive] = useState(false)
+  const [inActive, setInActive] = useState(false)
+  const [dataList, setDataList] = useState(data)
 
+
+  const handleAll = () => {
+    setInActive(false)
+    setActive(false)
+    setAllActive(!allActive)
+  }
+
+  const handleActive = () => {
+    setInActive(false)
+    setAllActive(false)
+    setActive(!active)
+  }
+  const handleInActive = () => {
+    setActive(false)
+    setAllActive(false)
+    setInActive(!inActive)
+  }
+  
   useEffect(() => {
     // Add or remove 'dark' class to the <html> element
     if (darkMode) {
@@ -31,15 +53,35 @@ const App = () => {
         <div className='flex flex-col md:flex-row  justify-between w-full mt-10 items-center gap-3'>
           <h1 className='text-white font-medium text-3xl dark:text-black'>Extensions List</h1>
           <div className='flex text-white'>
-            <Button label={'All'} active={true} />
-            <Button label={'Active'} />
-            <Button label={'Inactive'} />
+            <button onClick={handleAll} className={`rounded-2xl bg-opacity-10 px-4 py-1 cursor-pointer mr-2 ${allActive ? 'bg-red-500 dark:bg-red-500 text-black dark:text-white' : 'bg-gray-700 text-white dark:bg-white'} outline-orange-500  dark:text-black` }>
+              All
+            </button>
+            <button onClick={handleActive} className={`rounded-2xl bg-opacity-10 px-4 py-1 cursor-pointer mr-2 ${active ? 'bg-red-500 dark:bg-red-500 text-black dark:text-white' : 'bg-gray-700 text-white dark:bg-white'} outline-orange-500  dark:text-black` }>
+              Active
+            </button>
+            <button onClick={handleInActive} className={`rounded-2xl bg-opacity-10 px-4 py-1 cursor-pointer mr-2 ${inActive ? 'bg-red-500 dark:bg-red-500 text-black dark:text-white' : 'bg-gray-700 text-white dark:bg-white'} outline-orange-500  dark:text-black` }>
+              InActive
+            </button>
           </div>
         </div>
         <div className='flex md:grid-cols-3 md:w-full md:grid gap-3 mt-7 flex-wrap w-[300px] items-center justify-center'>
-          {data.map(item => (
+          {allActive && data.map(item => (
             <Card key={item.id} {...item} />
           ))}
+          {active &&
+            dataList
+              .filter(item => item.isActive) // only items with isActive: true
+              .map(item => (
+                <Card key={item.id} {...item} />
+              ))
+          }
+          {inActive &&
+            dataList
+              .filter(item => !item.isActive) // only items with isActive: true
+              .map(item => (
+                <Card key={item.id} {...item} />
+              ))
+          }
         </div>
       </div>
      
