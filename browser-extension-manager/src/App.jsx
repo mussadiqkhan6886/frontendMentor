@@ -11,7 +11,13 @@ const App = () => {
   const [active, setActive] = useState(false)
   const [inActive, setInActive] = useState(false)
   const [dataList, setDataList] = useState(data)
+  const [cardId, setCardId] = useState(null)
 
+  console.log(cardId)
+
+  const handleCardIdChange = (id) => {
+    setCardId(id)
+  }
 
   const handleAll = () => {
     setInActive(false)
@@ -64,8 +70,8 @@ const App = () => {
           </div>
         </div>
         <div className='flex md:grid-cols-3 md:w-full md:grid gap-3 mt-7 flex-wrap w-[300px] items-center justify-center'>
-          {allActive && data.map(item => (
-            <Card key={item.id} {...item} />
+          {allActive && data.map((item,index) => (
+            <Card key={index} {...item} />
           ))}
           {active &&
             dataList
@@ -78,7 +84,7 @@ const App = () => {
             dataList
               .filter(item => !item.isActive) // only items with isActive: true
               .map(item => (
-                <Card key={item.id} {...item} />
+                <Card key={item.id} {...item} onIdChange={handleCardIdChange} />
               ))
           }
         </div>

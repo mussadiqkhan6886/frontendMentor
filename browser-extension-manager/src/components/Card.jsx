@@ -1,11 +1,13 @@
 import { useState } from "react"
 
-const Card = ({logo, name, description, isActive: initialActive}) => {
+const Card = ({logo, name, description, isActive: initialActive, onIdChange}) => {
 
   const [isActive, setIsActive] = useState(initialActive);
 
-  function handleClick(){
-    setIsActive(prev => !prev);
+  const toggleActive = () => {
+    setIsActive(!isActive)
+
+    onIdChange(!isActive ? 'true' : 'false');
   }
   
 
@@ -23,7 +25,7 @@ const Card = ({logo, name, description, isActive: initialActive}) => {
       </div>
       <div className="absolute bottom-4 flex justify-between items-center w-[87%]">
         <button onClick={(e) => {removeBlock(e)}} className="border-[1px] border-gray-50 text-white rounded-2xl px-4 py-1 text-center cursor-pointer hover:bg-red-500 hover:text-black hover:dark:text-white hover:border-black dark:text-black  dark:border-black">Remove</button>
-        <div onClick={handleClick} className={`relative rounded-full w-9 h-4 cursor-pointer  ${isActive ? 'bg-red-400' : 'bg-gray-400'}`}>
+        <div onClick={toggleActive} className={`relative rounded-full w-9 h-4 cursor-pointer  ${isActive ? 'bg-red-400' : 'bg-gray-400'}`}>
           <div className={`absolute w-4 h-4 bg-white rounded-full  ${isActive ? ' left-5' : ' left-0'}`}>
           </div>
         </div>
