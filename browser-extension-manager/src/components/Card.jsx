@@ -10,7 +10,7 @@ const Card = ({logo, name, description, isActive: initialActive}) => {
   
 
   function removeBlock(e){
-    // it will remove card
+    e.target.parentElement.parentElement.remove()
   }
   return (
     <div id={isActive.toString()} className="bg-gray-800 h-44 bg-opacity-10 rounded-2xl p-4 border-[1px] border-gray-50 border-opacity-40 relative">
